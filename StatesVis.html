@@ -1,0 +1,175 @@
+<!--
+//starter page 
+    // united states map 
+
+//the US map when hovered over shows
+    m/f ratio
+    average salary
+
+    //click on state
+        shows average high and low salary for CS/engineering fields
+        shows mayb circle graph on the sub categories of jobs
+todo:
+
+    catigorize each CS/engineering job into one of X
+        * coding/data
+        * management 
+        * contractor
+        * researcher
+-->
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+.header {
+  padding: 30px;
+  text-align: center;
+  background: #f1f1f1;
+}
+	
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+.dot {
+  height: 75px;
+  width: 75px;
+  background-color: #87CEEB;
+;
+  border-radius: 50%;
+  padding: 16px;
+  display: inline-block;
+}
+	.state{
+		fill: none;
+		stroke: #a9a9a9;
+		stroke-width: 1;
+	}
+	.state:hover{
+		fill-opacity:0.5;
+	}
+	#tooltip {   
+		position: absolute;           
+		text-align: center;
+		padding: 20px;             
+		margin: 10px;
+		font: 12px sans-serif;        
+		background: lightsteelblue;   
+		border: 1px;      
+		border-radius: 2px;           
+		pointer-events: none;         
+	}
+	#tooltip h4{
+		margin:0;
+		font-size:14px;
+	}
+	#tooltip{
+		background:rgba(0,0,0,0.9);
+		border:1px solid grey;
+		border-radius:5px;
+		font-size:12px;
+		width:auto;
+		padding:4px;
+		color:white;
+		opacity:0;
+	}
+	#tooltip table{
+		table-layout:fixed;
+	}
+	#tooltip tr td{
+		padding:0;
+		margin:0;
+	}
+	#tooltip tr td:nth-child(1){
+		width:50px;
+	}
+	#tooltip tr td:nth-child(2){
+		text-align:center;
+	}
+
+	body {
+  font-family: Arial;
+  padding: 10px;
+  background: #f1f1f1;
+}
+</style>
+
+	<div class="header">
+	<h1 > Wages for Computer Related Jobs by State </h1>
+	<p> Note: clicking a state will take you to 2</p>
+	<div class="fakeimg" style="height:50px;">
+		<div style="text-align:center">
+			<button class="dot" onclick="location.href='Welcome.html'" style="float:left">Home</button><p></p>
+			<button class="dot" onclick="location.href='InsideState.html'" style="float:right">2</button><p></p>
+		  </div>
+	  </div>
+	</div>
+</head>
+<body>
+
+	
+<div id="tooltip"></div><!-- div to hold tooltip. -->
+<svg width="960" height="600" id="statesvg"></svg> <!-- svg to hold the map. -->
+<svg width="960" height="600" id="svg"></svg> <!-- svg to hold the bar graph. -->
+<script src="usStates.js"></script> <!-- creates uStates. -->
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v2.min.js"></script>
+<svg width="960" height="600" id="svg"></svg> <!-- svg to hold the bar graph. -->
+<script>
+
+    d3.csv("cleaned_state.csv", function(error, data) {
+    if (error) throw error;
+    var sampleData = {}
+        function tooltipHtml(n, d){	/* function to create html content string in tooltip div. */
+			console.log(d)
+			var min = d.min,
+				avg = d.avg,
+				max = d.max;
+                return "<h4>"+n+"</h4><table>"+
+                "<tr><td>Low </td><td>"+formatMoney(min)+"</td></tr>"+
+                "<tr><td>Average </td><td>"+formatMoney(avg)+"</td></tr>"+
+                "<tr><td>High </td><td>"+formatMoney(max)+"</td></tr>"+
+                "</table>";
+        }
+    data.forEach(function(d) { //for each row in data
+        var min = d.min,
+        max = d.max,
+        avg = d.avg;
+        console.log(d)
+        sampleData[d.state]={min : min, avg: avg, max: max, 
+            color: d3.interpolate("#F0F8FF", "#000080")(min/100000), state: d.state}; 
+                
+           
+        });
+        console.log(sampleData)
+        uStates.draw("#statesvg", sampleData, tooltipHtml);
+        
+	});
+	
+	function formatMoney(amount, decimalCount = 2, decimal = ".", thousands = ",") {
+		try {
+			decimalCount = Math.abs(decimalCount);
+			decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
+
+			const negativeSign = amount < 0 ? "-" : "";
+
+			let i = parseInt(amount = Math.abs(Number(amount) || 0).toFixed(decimalCount)).toString();
+			let j = (i.length > 3) ? i.length % 3 : 0;
+
+			return negativeSign + (j ? i.substr(0, j) + thousands : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) + (decimalCount ? decimal + Math.abs(amount - i).toFixed(decimalCount).slice(2) : "");
+		} catch (e) {
+			console.log(e)
+		}
+	};
+
+    
+</script> 
+
+
+</body>
+<footer>
+	
+</footer>
+</html>

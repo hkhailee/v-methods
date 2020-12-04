@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 12px;
+}
+
+body {
+  font-family: Arial;
+  padding: 10px;
+  background: #ddd;
+}
+
+/* Header/Blog Title */
+.header {
+  padding: 30px;
+  text-align: center;
+  background:#ddd;
+}
+
+.header h1 {
+  font-size: 50px;
+}
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {   
+  float: left;
+  width: 75%;
+}
+
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 25%;
+  background-color: #f1f1f1;
+  padding-left: 20px;
+}
+
+/* Fake image */
+.fakeimg {
+  background-color: #ddd;
+  width: 100%;
+  padding: 20px;
+  display: inline-block;
+  align: center;
+  
+}
+
+.dot {
+  height: 75px;
+  width: 75px;
+  background-color: beige;
+  border-radius: 50%;
+  padding: 16px;
+  display: inline-block;
+}
+
+/* Add a card effect for articles */
+.card {
+  background-color: #ddd;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}
+</style>
+<div class="header">
+	<h1 > Final Project Presentation </h1>
+	
+		<div style="text-align:center">
+			<button class="dot" onclick="location.href='Welcome.html'" style="float:left">Home</button><p></p>
+			<button class="dot" onclick="location.href='StatesVis.html'" style="float:right">1</button><p></p>
+		  </div>
+	  
+	</div>
+</head>
+<body>
+  
+<div class="card">
+   
+    <div class="fakeimg"><p><iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSD5PADRugzJDPwmV3Ulb-Vr1IECf_DFd6x2ehyCwxMuYDIXOh0GybIgLIPj2zO9XuhORStbz0GU90X/embed?start=true&loop=false&delayms=3000" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></p></div>
+  </div>  
+</body>
+
+</html>

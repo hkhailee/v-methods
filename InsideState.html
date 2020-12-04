@@ -1,0 +1,200 @@
+<!--//One webpage for all 50 states
+
+//with dropdown
+
+//dropdown auto fills with clicked state otherwise user can be prompted
+
+//choose a state to look further into :
+
+//displays state
+
+//how does this state rank to the other 50?
+
+//show m/f gender distribution -->
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+.header {
+  padding: 30px;
+  text-align: center;
+  background: #f1f1f1;
+}
+	
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+.dot {
+  height: 75px;
+  width: 75px;
+  background-color: #87CEEB;
+;
+  border-radius: 50%;
+  padding: 16px;
+  display: inline-block;
+}
+	.state{
+		fill: none;
+		stroke: #a9a9a9;
+		stroke-width: 1;
+	}
+	.state:hover{
+		fill-opacity:0.5;
+	}
+	#tooltip {   
+		position: absolute;           
+		text-align: center;
+		padding: 20px;             
+		margin: 10px;
+		font: 12px sans-serif;        
+		background: lightsteelblue;   
+		border: 1px;      
+		border-radius: 2px;           
+		pointer-events: none;         
+	}
+	#tooltip h4{
+		margin:0;
+		font-size:14px;
+	}
+	#tooltip{
+		background:rgba(0,0,0,0.9);
+		border:1px solid grey;
+		border-radius:5px;
+		font-size:12px;
+		width:auto;
+		padding:4px;
+		color:white;
+		opacity:0;
+	}
+	#tooltip table{
+		table-layout:fixed;
+	}
+	#tooltip tr td{
+		padding:0;
+		margin:0;
+	}
+	#tooltip tr td:nth-child(1){
+		width:50px;
+	}
+	#tooltip tr td:nth-child(2){
+		text-align:center;
+	}
+
+	body {
+  font-family: Arial;
+  padding: 10px;
+  background: #f1f1f1;
+}
+</style>
+
+	<div class="header">
+	<h1 > Inside of X</h1>
+	<p> </p>
+	<div class="fakeimg" style="height:50px;">
+		<div style="text-align:center">
+			<button class="dot" onclick="location.href='StatesVis.html'" style="float:left">1</button><p></p>
+			<button class="dot" onclick="location.href='broken.html'" style="float:right">3</button><p></p>
+		  </div>
+	  </div>
+	</div>
+</head>
+<body>
+
+	
+<div id="tooltip"></div><!-- div to hold tooltip. -->
+<!--svg width="960" height="600" id="statesvg"></svg> <!-- svg to hold the map. -->
+
+<div class='selector'></div>
+<div><button id='toggle'></button></div>
+
+<script src="usStates.js"></script> <!-- creates uStates. -->
+<script src="http://d3js.org/d3.v5.min.js"></script>
+<script src="http://d3js.org/topojson.v2.min.js"></script>
+<svg width="960" height="600" id="svg"></svg> 
+<script>
+    //need a drop down select states
+    var data = [
+        "Alabama (AL)",
+        "Alaska (AK)",
+        "Arizona (AZ)",
+        "Arkansas (AR)",
+        "California (CA)",
+        "Colorado (CO)",
+        "Connecticut (CT)",
+        "Delaware (DE)",
+        "District of Columbia (DC)",
+        "Florida (FL)",
+        "Georgia (GA)",
+        "Hawaii (HI)",
+        "Idaho (ID)",
+        "Illinois (IL)",
+        "Indiana (IN)",
+        "Iowa (IA)",
+        "Kansas (KS)",
+        "Kentucky (KY)",
+        "Louisiana (LA)",
+        "Maine (ME)",
+        "Maryland (MD)",
+        "Massachusetts (MA)",
+        "Michigan (MI)",
+        "Minnesota (MN)",
+        "Mississippi (MS)",
+        "Missouri (MO)",
+        "Montana (MT)",
+        "Nebraska (NE)",
+        "Nevada (NV)",
+        "New Hampshire (NH)",
+        "New Jersey (NJ)",
+        "New Mexico (NM)",
+        "New York (NY)",
+        "North Carolina (NC)",
+        "North Dakota (ND)",
+        "Ohio (OH)",
+        "Oklahoma (OK)",
+        "Oregon (OR)",
+        "Pennsylvania (PA)",
+        "Rhode Island (RI)",
+        "South Carolina (SC)",
+        "South Dakota (SD)",
+        "Tennessee (TN)",
+        "Texas (TX)",
+        "Utah (UT)",
+        "Vermont (VT)",
+        "Virginia (VA)",
+        "Washington (WA)",
+        "West Virginia (WV)",
+        "Wisconsin (WI)",
+        "Wyoming (WY)"
+    ];
+
+    var select = d3.select('div.selector')
+        .append('select')
+        .attr('class', 'select')
+        .on('change', onchange)
+
+    var options = select
+        .selectAll('option')
+        .data(data).enter()
+        .append('option')
+        .text(function (d) { return d; });
+
+    function onchange() {
+        selectValue = d3.select('select').property('value');
+        render(selectValue);
+    };
+
+    var toggle = d3.select('#toggle');
+		toggle.text("View State");
+
+
+</script> 
+
+
+</body>
+<footer>
+	
+</footer>
+</html>

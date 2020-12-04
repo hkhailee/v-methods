@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+
+.button {
+  background-color:	#87CEEB;
+;
+  border: none;
+  
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 12px;
+}
+
+body {
+  font-family: Arial;
+  padding: 10px;
+  background: #f1f1f1;
+}
+
+/* Header/Blog Title */
+.header {
+  padding: 30px;
+  text-align: center;
+  background: white;
+}
+
+.header h1 {
+  font-size: 50px;
+}
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {   
+  float: left;
+  width: 75%;
+}
+
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 25%;
+  background-color: #f1f1f1;
+  padding-left: 20px;
+}
+
+/* Fake image */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+.dot {
+  height: 75px;
+  width: 75px;
+  background-color: 	#87CEEB;
+  border-radius: 50%;
+  padding: 16px;
+  display: inline-block;
+}
+
+/* Add a card effect for articles */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Computer Related Fields Pay</h1>
+  <p>CS 564: Visualization Methods</p>
+</div>
+
+<div class="topnav">
+  <a href="StatesVis.html">1: US State Key Wage Estimates</a>
+  <a href="#">2:</a>
+  <a href="#">3:</a>
+  <a href="#">4:</a>
+
+
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>Welcome!</h2>
+      <h5>For a lot of recent college graduates they are going into their field of interest and do not fully
+        understand how much their education is worth. In the Information technology field it seems to be
+        common to see huge pay gaps for different jobs offered at different companies. You can google
+        it and find a basic answer: on average $71,500 (Forbes). However there are still technology
+        start up companies hiring recent graduates at $40,000 a year. So what are our
+        computer science recent graduates really worth and how much can they actually make outside
+        of academia?
+        <p></p>
+        Our solution to students and recent graduates not knowing how much they should negotiate
+        their pay based on their job is through data visualization of the experience and pay of major
+        technological companies so that they can make an informed decision on how much they should
+        negotiate their pay and, when to walk away from a job offer.</h5>
+      <div class="fakeimg" style="height:550px;">
+        <div style="text-align:center">
+            <h1>Interactive Research</h1>
+            <p> In the following bubbles creates your path to becoming more educated on the journey of self worth :) 
+                Go through each of the 4 stages by following the bellow order. After absorbing as much information as 
+                possible go ahead and move on to the next bubble or go back using the top of page navigations.</p>
+            
+            <button class="dot" onclick="location.href='StatesVis.html'">1</button><p></p>
+            <button class="dot">2</button><p></p>
+            <button class="dot">3</button><p></p>
+            <button class="dot">4</button><p></p>
+          </div>
+      </div>
+    </div>
+    
+  </div>
+  <div class="rightcolumn">
+    <div class="card">
+    
+      <div class="fakeimg" style="height:120px;">
+        <button class ="button" onclick="location.href='Presentation.html'">To Presentation</button>
+      </div>
+      <p >Accompanying powerpoint presentation for project</p>
+    </div>
+    <div class="card">
+    
+        <div class="fakeimg" style="height:100px;">
+          <button class ="button" onclick="location.href='broken'">To Report</button>
+        </div>
+        <p >Accompanying Project Report</p>
+      </div>
+    
+  </div>
+</div>
+
+<div class="footer">
+  <h2>Fall 2020 CS 564 Final Project Kiesecker</h2>
+</div>
+
+</body>
+</html>
